@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-md-6 col-sm-6 col-xs-6 col-lg-2 col-md-offset-5">
+      <h1> Calculator</h1>
+
+      <div class="col-lg-12">
+      <br>
+        <p class="form-group">
+          <label>Type of interest</label>
+          <div class="btn-group">
+          <label class="btn btn-default" ng-model="interestModel" uib-btn-radio="'simple'" uncheckable>Simple</label>
+          <label class="btn btn-default" ng-model="interestModel" uib-btn-radio="'compound'" uncheckable>Compound</label>
+          </div>
+        </p>
+        <p class="form-group">
+          <label>Principal</label>
+          <input type="number" ng-model="principal" class="form-control">
+        </p>
+        <p class="form-group">
+          <label>Rate of interest:</label>
+          <input type="number" ng-model="rateInterest" class="form-control">
+        </p>
+        <p class="form-group">
+          <label>Time Period:(Years)</label>
+          <select ng-model="years" ng-options="n for n in range" class="form-control"></select>
+        </p>
+        <p class="form-group" ng-if="interestModel == 'compound'">
+          <label>Compound Frequency:</label>
+          <select ng-model="selectedFr.value" ng-options="fr.name for fr in frequences" class="form-control">
+          </select>
+        </p>
+      </div>
+
+
+
+        <button ng-disabled="!interestModel" class="btn btn-success" ng-click="calculateInterest()">Calculate</button>
+        <br><br>
+        <div ng-if ="finalInterest">
+          <h4>Your result is</h4>
+          <p class="form-group">
+              <label>Final Interest: {{finalInterest}}</label>
+          </p>
+          <p class="form-group">
+              <label>Total {{total}}</label>
+          </p>
+        </div>
+    </div>
+</div>
